@@ -23,6 +23,15 @@
     font-weight: bold;
 }
 
+.spinner {
+    margin: auto !important;
+    margin-top: 120px !important;
+}
+
+.subtitle-container{
+    margin: 5px 0 5px 0;
+}
+
 @media (max-width: 768px) {
     .full-search-bar {
         width: 100%

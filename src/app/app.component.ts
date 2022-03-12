@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { AppService } from './app.service';
@@ -14,19 +13,12 @@ export class AppComponent {
   public noData: boolean = false;
   public myControl = new FormControl();
   public options: any[] = [];
-  /*
-  public options: any[] = [
-    { firstName: "Alejo", profession: "Pediatra" },
-    { firstName: "Leo", profession: "Odontologo" },
-    { firstName: "Ana", profession: "Internista" },
-  ];
-  */
   public filteredOptions: any;
   public filteredData: any[] = this.options;
 
   constructor(
     private service: AppService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getDirectories();
@@ -36,7 +28,7 @@ export class AppComponent {
     );
   }
 
-  public getDirectories(){
+  public getDirectories() {
     this.noData = true;
     this.service.getDirectories().pipe(take(1)).subscribe((data) => {
       this.options = data;
@@ -47,6 +39,7 @@ export class AppComponent {
 
   public filter(event: any): void {
     let expresion = new RegExp(`${event.target.value}.*`, "i");
-    this.filteredData = this.options.filter(x => expresion.test(x.firstName) || expresion.test(x.profession));
+    this.filteredData = this.options.filter(x => expresion.test(x.firstName)
+      || expresion.test(x.profession) || expresion.test(x.municipality));
   }
 }

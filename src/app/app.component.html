@@ -1,28 +1,42 @@
 <div class="container">
-  <section class="search-bar-container">
-    <form class="example-form">
-      <mat-form-field class="full-search-bar" appearance="fill">
-        <input (keyup)="filter($event)" type="text" placeholder="Buscar especialista" matInput [formControl]="myControl">
-      </mat-form-field>
-    </form>
-  </section>
-  <section class="item-car-container">
-    <div *ngFor="let item of filteredData">
-      <mat-card class="example-card">
-        <mat-card-title-group>
-          <mat-card-title> {{ item.firstName }} </mat-card-title>
-          <mat-card-subtitle> {{ item.profession }} </mat-card-subtitle>
-          <img mat-card-sm-image [src]="item.photo">
-        </mat-card-title-group>
-        <mat-card-content>
-          <div>
-            <span class="subtitle">Teléfono:</span> {{ item.phoneNumber }}
-          </div>
-          <div>
-            <span class="subtitle">Consultorio:</span> {{ item.officeAddress}}
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </section>
+
+  <mat-spinner *ngIf="noData" class="spinner"></mat-spinner>
+  <div [hidden]="noData">
+    <section class="search-bar-container">
+      <form class="example-form">
+        <mat-form-field class="full-search-bar" appearance="fill">
+          <input (keyup)="filter($event)" type="text" placeholder="Buscar especialista" matInput
+            [formControl]="myControl">
+        </mat-form-field>
+      </form>
+    </section>
+    <section class="item-car-container">
+      <div *ngFor="let item of filteredData">
+        <mat-card class="example-card">
+          <mat-card-title-group>
+            <mat-card-title> {{ item.firstName }} </mat-card-title>
+            <mat-card-subtitle> {{ item.profession }} </mat-card-subtitle>
+            <img mat-card-sm-image [src]="item.photo">
+          </mat-card-title-group>
+          <mat-card-content>
+            <div class="subtitle-container">
+              <span class="subtitle">Teléfono:</span> {{ item.phoneNumber }}
+            </div>
+            <div class="subtitle-container">
+              <span class="subtitle">Consultorio:</span> {{ item.officeAddress}}
+            </div>
+            <div class="subtitle-container">
+              <span class="subtitle">Municipio:</span> {{ item.municipality }}
+            </div>
+            <div class="subtitle-container">
+              <span class="subtitle">Horario de atención:</span> {{ item.schedule }}
+            </div>
+            <div class="subtitle-container">
+              <span class="subtitle">Tipo de cita:</span> {{ item.typeSchedule }}
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </section>
+  </div>
 </div>
