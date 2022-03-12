@@ -17,17 +17,17 @@ export class AppComponent {
     { firstName: "Ana", profession: "Internista" },
   ];
   filteredOptions: any;
+  filteredData: any[] = this.options;
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value)),
+      map(value => this.filter(value)),
     );
   }
 
-  private _filter(value: string): any[] {
-    let expresion = new RegExp(`${value}.*`, "i");
-    let filteredData = this.options.filter(x => expresion.test(x.firstName) || expresion.test(x.profession));
-    return filteredData;
+  public filter(event: any): void {
+    let expresion = new RegExp(`${event.target.value}.*`, "i");
+    this.filteredData = this.options.filter(x => expresion.test(x.firstName) || expresion.test(x.profession));
   }
 }

@@ -1,13 +1,26 @@
-.search-bar-container {
+.search-bar-container, .item-car-container {
     padding: 20px;
 }
 
-.example-full-width {
-    width: 60%
+.search-bar-container{
+    text-align: center;
+}
+
+.item-car-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 30%));
+    gap: 20px;
+    grid-template-rows: auto;
+    justify-content: center;
+}
+
+.full-search-bar {
+    width: 40%;
+    margin: auto;
 }
 
 @media (max-width: 768px) {
-    .example-full-width {
+    .full-search-bar {
         width: 100%
     }
 }
