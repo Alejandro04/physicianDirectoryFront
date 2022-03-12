@@ -8,7 +8,7 @@ import { environment } from "../environments/environment";
   providedIn: "root",
 })
 export class AppService {
-  private url: string = environment.apiUrl;
+  private url: string = "https://physician-directory-api.vercel.app";
   private action = new Subject<string>();
   public actionObservable = this.action.asObservable();
 
