@@ -49,6 +49,10 @@ a{
     text-align: center;
 }
 
+.hero > p {
+    padding: 0 10px 0 10px;
+}
+
 .faq-back{
     font-weight: bold;
     font-size: 22px;
@@ -60,9 +64,8 @@ a{
 }
 
 .faq-action{
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 100px;
+    text-align: right;
+    margin-right: 20px;
 }
 
 @media (max-width: 768px) {
