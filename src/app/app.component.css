@@ -19,6 +19,10 @@
     margin: auto;
 }
 
+.subtitle{
+    font-weight: bold;
+}
+
 @media (max-width: 768px) {
     .full-search-bar {
         width: 100%

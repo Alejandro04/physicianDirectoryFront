@@ -12,10 +12,15 @@
         <mat-card-title-group>
           <mat-card-title> {{ item.firstName }} </mat-card-title>
           <mat-card-subtitle> {{ item.profession }} </mat-card-subtitle>
-          <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+          <img mat-card-sm-image [src]="item.photo">
         </mat-card-title-group>
         <mat-card-content>
-          Test
+          <div>
+            <span class="subtitle">Teléfono:</span> {{ item.phoneNumber }}
+          </div>
+          <div>
+            <span class="subtitle">Consultorio:</span> {{ item.officeAddress}}
+          </div>
         </mat-card-content>
       </mat-card>
     </div>
