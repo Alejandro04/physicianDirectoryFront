@@ -1,0 +1,13 @@
+.search-bar-container {
+    padding: 20px;
+}
+
+.example-full-width {
+    width: 60%
+}
+
+@media (max-width: 768px) {
+    .example-full-width {
+        width: 100%
+    }
+}
