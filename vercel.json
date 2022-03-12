@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "public": true,
+    "name": "directory",
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/api" }
+    ],
+    "functions": {
+      "api/index.js": {
+        "includeFiles": "dist/directory/browser/**"
+      }
+    }
+  }
