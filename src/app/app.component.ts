@@ -15,6 +15,8 @@ export class AppComponent {
   public options: any[] = [];
   public filteredOptions: any;
   public filteredData: any[] = this.options;
+  public faqEnabled: boolean = false;
+  public directoryEnabled: boolean = true;
 
   constructor(
     private service: AppService
@@ -41,5 +43,16 @@ export class AppComponent {
     let expresion = new RegExp(`${event.target.value}.*`, "i");
     this.filteredData = this.options.filter(x => expresion.test(x.firstName)
       || expresion.test(x.profession) || expresion.test(x.municipality));
+  }
+
+  public enabledPage(value: string): void {
+    if(value === 'faq'){
+      this.faqEnabled = true;
+      this.directoryEnabled = false;
+    }
+    if(value === 'directory'){
+      this.faqEnabled = false;
+      this.directoryEnabled = true;
+    }
   }
 }
