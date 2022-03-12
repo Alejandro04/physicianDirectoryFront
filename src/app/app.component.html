@@ -1,31 +1,50 @@
 <div class="container">
 
-  <div class="faq" *ngIf="directoryEnabled">
-    <p (click)="enabledPage('faq')"> Preguntas frecuentes  </p>
-  </div>
-
-  <div *ngIf="faqEnabled" class="faq">
-    <p (click)="enabledPage('directory')" class="faq-back" >Volver</p>
+  <div class="faq-action" *ngIf="directoryEnabled">
+    <p (click)="enabledPage('faq')"> Preguntas frecuentes </p>
   </div>
 
   <div class="hero">
     <h1>Directorio de médicos</h1>
     <p *ngIf="directoryEnabled"> Encuentra los datos de contacto de tu especialista rápidamente.</p>
     <p *ngIf="faqEnabled"> Preguntas frecuentes.</p>
+    <p *ngIf="faqEnabled" (click)="enabledPage('directory')" class="faq-back">Volver</p>
   </div>
 
   <mat-spinner *ngIf="noData" class="spinner"></mat-spinner>
+  <div class="item-faq-container">
+    <div *ngIf="faqEnabled" class="faq">
+      <div>
+        <span class="subtitle">¿Cuál problema resuelve esta herramienta?:</span>
+        <p>La dificultad de conseguir datos de especialistas médicos de forma instantánea</p>
+      </div>
+      <div>
+        <span class="subtitle">¿Usar el directorio tiene costo?:</span>
+        <p>No, siempre será gratis.</p>
+      </div>
+      <div>
+        <span class="subtitle">¿Es seguro usar este sitio web?:</span>
+        <p>Si, es imposible que sea contaminado por virus.</p>
+      </div>
+      <div>
+        <span class="subtitle">¿Quién desarrolló esta herramienta?:</span>
+        <p>Alejandro Roa, habitante del municipio Michelena y desarrollador web.
+        </p>
+      </div>
+    </div>
+
+  </div>
   <div [hidden]="noData">
     <div *ngIf="directoryEnabled">
       <section class="search-bar-container">
         <form class="example-form">
           <mat-form-field class="full-search-bar" appearance="fill">
-            <input (keyup)="filter($event)" type="text" placeholder="Buscar médico por especialidad, nombre o municipio" matInput
-              [formControl]="myControl">
+            <input (keyup)="filter($event)" type="text" placeholder="Buscar médico por especialidad, nombre o municipio"
+              matInput [formControl]="myControl">
           </mat-form-field>
         </form>
       </section>
-      <section class="item-car-container">
+      <section class="item-card-container">
         <div *ngFor="let item of filteredData">
           <mat-card class="example-card">
             <mat-card-title-group>

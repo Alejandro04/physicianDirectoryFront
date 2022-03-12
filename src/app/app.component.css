@@ -1,4 +1,4 @@
-.search-bar-container, .item-car-container {
+.search-bar-container, .item-card-container {
     padding: 20px;
 }
 
@@ -6,12 +6,18 @@
     text-align: center;
 }
 
-.item-car-container{
+.item-card-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 30%));
     gap: 20px;
     grid-template-rows: auto;
     justify-content: center;
+}
+
+.item-faq-container{
+    width: 100%;
+    padding: 20px;
+    text-align: center;
 }
 
 .full-search-bar {
@@ -43,18 +49,20 @@ a{
     text-align: center;
 }
 
-.faq{
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 20px;
-}
-.faq:hover{
-    color: cadetblue;
-    cursor: pointer;
-}
 .faq-back{
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.faq-back:hover, .faq-action:hover{
+    cursor: pointer;
+    color: cadetblue;
+}
+
+.faq-action{
     display: flex;
     justify-content: flex-end;
+    margin-right: 100px;
 }
 
 @media (max-width: 768px) {
