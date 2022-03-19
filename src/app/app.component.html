@@ -39,9 +39,14 @@
       <section class="search-bar-container">
         <form class="example-form">
           <mat-form-field class="full-search-bar" appearance="fill">
-            <input (keyup)="filter($event)" type="text" placeholder="Buscar por especialidad, nombre o municipio"
-              matInput [formControl]="myControl">
+            <input type="text" placeholder="Buscar por especialidad, nombre o municipio"
+              matInput [formControl]="myControl" [matAutocomplete]="auto">
           </mat-form-field>
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.allData">
+              {{option.firstName}} {{option.lastName}} | {{option.profession}}
+            </mat-option>
+          </mat-autocomplete>
         </form>
       </section>
       <section class="item-card-container">

@@ -26,31 +26,49 @@ export class AppComponent {
     this.getDirectories();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => this.filter(value)),
+      map(value => this._filter(value)),
     );
   }
 
   public getDirectories() {
     this.noData = true;
     this.service.getDirectories().pipe(take(1)).subscribe((data) => {
-      this.options = data;
-      this.filteredData = data;
+
+      const newData = data.map((item: any) => {
+        return {
+          firstName: item.firstName,
+          lastName: item.lastName,
+          profession: item.profession,
+          photo: item.photo,
+          phoneNumber:  item.phoneNumber,
+          officeAddress: item.officeAddress,
+          municipality: item.municipality,
+          schedule: item.schedule,
+          typeSchedule: item.typeSchedule,
+          allData: item.firstName + ' ' + item.lastName + ' - ' + item.profession
+        }
+      });
+
+      this.options = newData;
+      this.filteredData = newData;
       this.noData = false;
     });
   }
 
-  public filter(event: any): void {
-    let expresion = new RegExp(`${event.target.value}.*`, "i");
-    this.filteredData = this.options.filter(x => expresion.test(x.firstName)
-      || expresion.test(x.profession) || expresion.test(x.municipality));
+  private _filter(value: string): any[] {
+    let expresion = new RegExp(`${value}.*`, "i");
+    this.filteredData = this.options.filter(x => expresion.test(x.allData));
+
+    const filteredDataAutocomplete = this.filteredData;
+    return filteredDataAutocomplete;
   }
 
   public enabledPage(value: string): void {
-    if(value === 'faq'){
+    if (value === 'faq') {
       this.faqEnabled = true;
       this.directoryEnabled = false;
     }
-    if(value === 'directory'){
+    if (value === 'directory') {
       this.faqEnabled = false;
       this.directoryEnabled = true;
     }
